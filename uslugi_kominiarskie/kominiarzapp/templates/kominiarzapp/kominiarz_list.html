@@ -1,0 +1,18 @@
+{% extends "kominiarzapp/szablon.html" %}
+{% block tytul %}Zamawianie{% endblock %}
+{% block naglowek %}Zamawianie{% endblock %}
+{% block zadanie %}Zamów usługę kominiarską{% endblock %}
+{% block formularz %}
+    <form action="" method="post">
+        <ul>
+            {% for object in object_list %}
+                <li>{{object.imie}}</li>
+                <li>{{object.nazwisko}}</li>
+                <li>{{object.wiek}}</li>
+                <li>{{object.opis}}</li>
+                <a href="../rezerwacja/{{object.id}}">detale</a>>
+                <br>
+            {% endfor %}
+        </ul>
+    </form>
+{% endblock %}

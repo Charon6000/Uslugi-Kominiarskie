@@ -1,0 +1,17 @@
+{% extends "kominiarzapp/szablon.html" %}
+{% load crispy_forms_tags %}
+{% block tytul %}Zamawianie{% endblock %}
+{% block naglowek %}Zamawianie{% endblock %}
+{% block zadanie %}Zamów usługę kominiarską{% endblock %}
+{% block formularz %}
+    <form action="" method="post">
+        
+        <ul>
+        {% csrf_token %}
+        {{form|crispy}}  
+        </ul>
+        <div class="row justify-content-center">      
+        <input class="btn btn-primary" type="submit" value="Dodaj">
+        </div>
+    </form>
+{% endblock %}
