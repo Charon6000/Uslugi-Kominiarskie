@@ -21,7 +21,7 @@
             <a class="navbar-brand ps-4" href="{% url 'Zamawianie' %}">Zamów</a>
           </li>
           <li class="nav-item">
-            <a class="navbar-brand ps-4 fw-bold" href="{% url 'Kominiarze' %}">Kominiarze</a>
+            <a class="navbar-brand ps-4" href="{% url 'Kominiarze' %}">Kominiarze</a>
           </li>
         </ul>
       </div>
@@ -31,19 +31,16 @@
 
 {% block formularz %}
 <div class="row justify-content-center">
-<h1 class="row justify-content-center mt-3">Wybierz swojego Kominiarza</h1>
-<form action="" method="post">
-    {% for object in object_list %}
+<h1 class="row justify-content-center mt-3">Detale Kominiarza</h1>
     <div class="card mb-3 mt-4 border border-3 border-black" style="width: 50%; margin-left: 25%; margin-right: 25%;">
-        <img src="/static/img/glowna2.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">{{object.imie}} {{object.nazwisko}}</h5>
-          <p class="card-text">{{object.opis|safe}}...</p>
-          <p class="card-text"><small class="text-body-secondary">Wiek: {{object.wiek}}<a style="float: right;" href="../kominiarz/{{object.id}}">Zobacz więcej</a></small></p>
-        </div>
+      <img src="/static/img/glowna2.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">ID: {{object.id}}</h5>
+        <p class="card-text">Imie: {{object.imie}}</p>
+        <p class="card-text">Nazwisko: {{object.nazwisko}}</p>
+        <p class="card-text">Wiek: {{object.wiek}}</p>
+        <p class="card-text">Opis: {{object.opis}}</p>
       </div>
-      
-    {% endfor %}
-</form>
+    </div>
 </div>
 {% endblock %}

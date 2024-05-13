@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.views.generic.list import ListView
 from .models import Kominiarz, Zamowienie
 from .forms import Zamawianie, DodawanieKominiarza
+from django.views.generic.detail import DetailView
 
 def Main(request):
     return render(request, "kominiarzapp/main.html")
@@ -45,3 +46,6 @@ def KominiarzForm(request):
         'form': form
     }
     return render(request, "kominiarzapp/kominiarz.html", context)
+
+class KominiarzDetail(DetailView):
+    model = Kominiarz

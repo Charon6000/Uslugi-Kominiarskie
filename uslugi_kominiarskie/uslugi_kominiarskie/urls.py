@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from kominiarzapp.views import Main, ZamawianieForm, Kominiarze, KominiarzForm, Zamowienia
+from kominiarzapp.views import Main, ZamawianieForm, Kominiarze, KominiarzForm, Zamowienia, KominiarzDetail
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -24,6 +24,7 @@ urlpatterns = [
     path('zamawianie/', ZamawianieForm, name="Zamawianie"),
     path('kominiarz/', KominiarzForm, name="Kominiarz"),
     path('kominiarze/', Kominiarze.as_view(), name="Kominiarze"),
-    path('zamowienia/', Zamowienia.as_view(), name="Zamowienia")
+    path('zamowienia/', Zamowienia.as_view(), name="Zamowienia"),
+    path('kominiarz/<int:pk>', KominiarzDetail.as_view(), name="Kominiarz Detale"),
     # listy zamówień
 ]
