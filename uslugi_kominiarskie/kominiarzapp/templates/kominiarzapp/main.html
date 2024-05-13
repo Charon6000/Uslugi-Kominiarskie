@@ -1,8 +1,93 @@
 {% extends "kominiarzapp/szablon.html" %}
 {% block tytul %}Strona Glówna{% endblock %}
-{% block naglowek %}Strona Glówna{% endblock %}
-{% block zadanie %}{% endblock %}
-{% block formularz %}
-    <h1>Usługi kominiarskie</h1>
-    <h4>Czyścimy kominy na błysk</h4>
+{% block tresc %}{% endblock %}
+<!-- /static/img/glowna1.jpg-->
+{% block naglowek%}
+<nav class="navbar navbar-expand-lg navbar-light">
+  <div class="container ">
+    <a class="navbar-brand " href="{% url 'Main' %}">
+    <div class="mx-auto mt-3 mb-3" >
+      <div>
+      <img src="/static/img/logo3.png"  style="width: 60%;"></div>
+      </div>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <div class="collapse navbar-collapse " id="navbarNav">
+      <ul class="navbar-nav ml-auto ">
+        <li class="nav-item">
+          <a class="navbar-brand ps-4 fw-bold" href="{% url 'Main' %}">Strona Główna</a>
+        </li>
+        <li class="nav-item">
+          <a class="navbar-brand ps-4" href="{% url 'Zamawianie' %}">Zamów</a>
+        </li>
+        <li class="nav-item">
+          <a class="navbar-brand ps-4" href="{% url 'Kominiarze' %}">Kominiarze</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
 {% endblock %}
+  {% block zdjecia %}
+  <div id="carouselExampleCaptions" class="carousel slide m-2" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="/static/img/glowna1.jpg" class="d-block w-100 img-thumbnail" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h1>Systemy kominowe i nasady kominowe Trójmiasto</h1>
+          <p class="fs-4">30 lat gwarancji na systemy kominowe !!</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="/static/img/glowna2.jpg" class="d-block w-100 img-thumbnail" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h1>Nasi kominiarze</h1>
+          <p class="fs-4">Tak zmontują komin że to baranie jaja</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="/static/img/glowna5.jpg" class="d-block w-100 img-thumbnail" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h1>Takie o kominy montujemy</h1>
+          <p class="fs-4">Że aż sąsiad będzie zazdrościł</p>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div><br><br><br><br>
+  </div>
+
+  <div class="container text-center ">
+    <div class="row">
+      <div class="col">
+        <img src="/static/img/glowna4.jpg" class="pb-3 rounded" style="width: 75%; margin-left: -40%;">
+      </div>
+      <div class="col">
+        <p class="fs-3 text-danger ">Wyspecjalizowany zespół i pełen wachlarz usług</p><br>
+        <p class="fs-4">Zapraszamy do skorzystania z szerokiej gamy usług kominiarskich w Trójmieście i okolicach! Jesteśmy doświadczoną firmą specjalizującą się w kompleksowej obsłudze różnorodnych systemów kominowych i wentylacyjnych. Nasz zespół składa się z wykwalifikowanych kominiarzy, posiadających bogatą wiedzę teoretyczną oraz praktyczne umiejętności zdobyte przez lata pracy w branży.</p><br>
+        <p class="fs-4">Oferujemy pełen zakres usług, w tym: montaż kominów, frezowanie kominów, uszczelnianie przewodów kominowych oraz montaż kominów izolowanych. Nasza firma kładzie nacisk na najwyższą jakość usług i całkowite zadowolenie klienta.</p><br>
+        <p class="fs-4">Działamy sprawnie i profesjonalnie na terenie województwa pomorskiego, dostosowując się do indywidualnych potrzeb i wymagań każdego zlecenia.</p>
+        <p class="fs-4 fw-bold">Zachęcamy do współpracy!</p>
+        <a href="{% url 'Zamawianie' %}"><button class="btn btn-danger" type="button">Zamów usługę już teraz</button></a>
+      </div>
+    </div>
+
+
+
+  
+  {% endblock %}
