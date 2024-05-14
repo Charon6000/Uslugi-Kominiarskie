@@ -25,6 +25,27 @@
         <li class="nav-item">
           <a class="navbar-brand ps-4" href="{% url 'Kominiarze' %}">Kominiarze</a>
         </li>
+        {% if user.is_authenticated %}
+        <li class="nav-item">
+          <a class="navbar-brand ps-4" href="{% url 'Kominiarz' %}">Dodaj kominiarza</a>
+        </li>
+        <li class="nav-item">
+          <a class="navbar-brand ps-4" href="{% url 'Zamowienia' %}">Zobacz zamówienia</a>
+        </li>
+        <li class="nav-item">
+          <form method="post" action="{% url 'accounts:Wylogowywanie' %}">
+          {% csrf_token %}
+          <button class="navbar-brand ps-4" href="{% url 'accounts:Wylogowywanie' %}">Wyloguj</button>
+          </form>
+        </li>
+        {% else %}
+        <li class="nav-item">
+          <a class="navbar-brand ps-4" href="{% url 'accounts:Logowanie' %}">Zaloguj się</a>
+        </li>
+        <li class="nav-item">
+          <a class="navbar-brand ps-4" href="{% url 'accounts:Rejestracja' %}">Zarejestruj się</a>
+        </li>
+        {% endif %}
       </ul>
     </div>
   </div>
