@@ -23,6 +23,28 @@
           <li class="nav-item">
             <a class="navbar-brand ps-4" href="{% url 'Kominiarze' %}">Kominiarze</a>
           </li>
+          <li class="nav-item  ">
+            <div class="dropdown ps-4 float-end ">
+              <a class="dropdown-toggle navbar-brand" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Konto
+              </a>
+            
+              <ul class="dropdown-menu mt-2 p-2">
+                {% if user.is_authenticated %}
+                <li class="d-flex justify-content-center ps-2"><a class="dropdown-item" href="{% url 'Kominiarz' %}">Dodaj kominiarza</a></li>
+                <li class="d-flex justify-content-center pt-1 ps-1"><a class="dropdown-item" href="{% url 'Zamowienia' %}">Zobacz zamówienia</a></li>
+                <li><hr class="dropdown-divider ms-2 me-2"></li>
+                <li class="d-flex justify-content-center"><form method="post" action="{% url 'accounts:Wylogowywanie' %}">
+                  {% csrf_token %}
+                  <button class="navbar-brand btn ps-4 fs-6 text-center" href="{% url 'accounts:Wylogowywanie' %}">Wyloguj</button>
+                  </form></li>
+                  {% else %}
+                  <li><a class="dropdown-item" href="{% url 'accounts:Logowanie' %}">Zaloguj się</a></li>
+                  <li><a class="dropdown-item" href="{% url 'accounts:Rejestracja' %}">Zarejestruj się</a></li>
+                  {% endif %}
+              </ul>
+            </div>
+          </li>
         </ul>
       </div>
     </div>
@@ -33,7 +55,7 @@
 <div class="row justify-content-center">
 <h1 class="row justify-content-center mt-3">Detale Kominiarza</h1>
     <div class="card mb-3 mt-4 border border-3 border-black" style="width: 50%; margin-left: 25%; margin-right: 25%;">
-      <img src={{object.zdj}} class="card-img-top" alt="...">
+      <img src={{object.zdj}} class="card-img-top pt-3" alt="...">
       <div class="card-body">
         <h5 class="card-title">ID: {{object.id}}</h5>
         <p class="card-text">Imie: {{object.imie}}</p>

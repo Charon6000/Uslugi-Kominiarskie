@@ -23,6 +23,28 @@
           <li class="nav-item">
             <a class="navbar-brand ps-4 fw-bold" href="{% url 'Kominiarze' %}">Kominiarze</a>
           </li>
+          <li class="nav-item  ">
+            <div class="dropdown ps-4 float-end ">
+              <a class="dropdown-toggle navbar-brand" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Konto
+              </a>
+            
+              <ul class="dropdown-menu mt-2 p-2">
+                {% if user.is_authenticated %}
+                <li class="d-flex justify-content-center ps-2"><a class="dropdown-item" href="{% url 'Kominiarz' %}">Dodaj kominiarza</a></li>
+                <li class="d-flex justify-content-center pt-1 ps-1"><a class="dropdown-item" href="{% url 'Zamowienia' %}">Zobacz zamówienia</a></li>
+                <li><hr class="dropdown-divider ms-2 me-2"></li>
+                <li class="d-flex justify-content-center"><form method="post" action="{% url 'accounts:Wylogowywanie' %}">
+                  {% csrf_token %}
+                  <button class="navbar-brand btn ps-4 fs-6 text-center" href="{% url 'accounts:Wylogowywanie' %}">Wyloguj</button>
+                  </form></li>
+                  {% else %}
+                  <li><a class="dropdown-item" href="{% url 'accounts:Logowanie' %}">Zaloguj się</a></li>
+                  <li><a class="dropdown-item" href="{% url 'accounts:Rejestracja' %}">Zarejestruj się</a></li>
+                  {% endif %}
+              </ul>
+            </div>
+          </li>
         </ul>
       </div>
     </div>
@@ -39,7 +61,7 @@
         <div class="card-body">
           <h5 class="card-title">{{object.imie}} {{object.nazwisko}}</h5>
           <p class="card-text">{{object.opis|safe}}...</p>
-          <p class="card-text"><small class="text-body-secondary">Wiek: {{object.wiek}}<a style="float: right;" href="../kominiarz/{{object.id}}">Zobacz więcej</a></small></p>
+          <p class="card-text"><small class="text-body-secondary">Wiek: {{object.wiek}}<a class="link-danger link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" style="float: right;" href="../kominiarz/{{object.id}}">Zobacz więcej</a></small></p>
         </div>
       </div>
       

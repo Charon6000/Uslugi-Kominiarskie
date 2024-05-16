@@ -25,6 +25,28 @@
         <li class="nav-item">
           <a class="navbar-brand ps-4" href="{% url 'Kominiarze' %}">Kominiarze</a>
         </li>
+        <li class="nav-item  ">
+          <div class="dropdown ps-4 float-end ">
+            <a class="dropdown-toggle navbar-brand" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Konto
+            </a>
+          
+            <ul class="dropdown-menu mt-2 p-2">
+              {% if user.is_authenticated %}
+              <li class="d-flex justify-content-center ps-2"><a class="dropdown-item fw-bold" href="{% url 'Kominiarz' %}">Dodaj kominiarza</a></li>
+              <li class="d-flex justify-content-center pt-1 ps-1"><a class="dropdown-item" href="{% url 'Zamowienia' %}">Zobacz zamówienia</a></li>
+              <li><hr class="dropdown-divider ms-2 me-2"></li>
+              <li class="d-flex justify-content-center"><form method="post" action="{% url 'accounts:Wylogowywanie' %}">
+                {% csrf_token %}
+                <button class="navbar-brand btn ps-4 fs-6 text-center" href="{% url 'accounts:Wylogowywanie' %}">Wyloguj</button>
+                </form></li>
+                {% else %}
+                <li><a class="dropdown-item" href="{% url 'accounts:Logowanie' %}">Zaloguj się</a></li>
+                <li><a class="dropdown-item" href="{% url 'accounts:Rejestracja' %}">Zarejestruj się</a></li>
+                {% endif %}
+            </ul>
+          </div>
+        </li>
       </ul>
     </div>
   </div>
@@ -44,7 +66,7 @@
         {{form|crispy}}   </div>
         </ul>
         <div class="row justify-content-center">      
-        <input class="btn btn-primary" type="submit" value="Dodaj">
+        <input class="btn btn-danger" type="submit" value="Dodaj">
         </div>
     </form>
 </div>

@@ -1,4 +1,5 @@
 {% extends "kominiarzapp/szablon.html" %}
+{% load crispy_forms_tags %}
 {% block naglowek%}
 <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container ">
@@ -23,6 +24,27 @@
           <li class="nav-item">
             <a class="navbar-brand ps-4" href="{% url 'Kominiarze' %}">Kominiarze</a>
           </li>
+          <li class="nav-item  ">
+            <div class="dropdown ps-4 float-end ">
+              <a class="dropdown-toggle navbar-brand" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Konto
+              </a>
+            
+              <ul class="dropdown-menu mt-2 p-2">
+                {% if user.is_authenticated %}
+                <li class="d-flex justify-content-center ps-2"><a class="dropdown-item" href="{% url 'Kominiarz' %}">Dodaj kominiarza</a></li>
+                <li class="d-flex justify-content-center pt-1 ps-1"><a class="dropdown-item" href="{% url 'Zamowienia' %}">Zobacz zamówienia</a></li>
+                <li><hr class="dropdown-divider ms-2 me-2"></li>
+                <li class="d-flex justify-content-center"><form method="post" action="{% url 'accounts:Wylogowywanie' %}">
+                  {% csrf_token %}
+                  <button class="navbar-brand btn ps-4 fs-6 text-center" href="{% url 'accounts:Wylogowywanie' %}">Wyloguj</button>
+                  </form></li>
+                  {% else %}
+                  <li><a class="dropdown-item" href="{% url 'accounts:Rejestracja' %}">Zarejestruj się</a></li>
+                  {% endif %}
+              </ul>
+            </div>
+          </li>
         </ul>
       </div>
     </div>
@@ -31,7 +53,7 @@
 
 {% block formularz %}
 <div class="container mt-5">
-  <div class="row justify-content-center">
+  <div class="row justify-content-center ">
     <div class="col-md-6">
       <div class="card">
         <div class="card-body">
@@ -40,15 +62,15 @@
   <form action="/accounts/logowanie/" method="post">
       <ul><div class="mx-auto p-5">
       {% csrf_token %}
-      {{form}}
+      {{form|crispy}}
       {% if request.GET.next %}
         <input type="hidden" name="next" value="{{request.GET.next}}">
       {% endif %}
       </div>
       </ul>
-      <div class="row justify-content-center">      
-      <input class="btn btn-primary" type="submit" value="Loguj">
-      <a href="{% url 'accounts:Rejestracja' %}">Nie masz konta? Zarejestruj się!</a>
+      <div class="row justify-content-center ps-2 pe-2">      
+      <input class="btn btn-danger  mb-4" type="submit" value="Loguj">
+      <a class="link-danger link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" href="{% url 'accounts:Rejestracja' %}">Nie masz konta? Zarejestruj się!</a>
       </div>
   </form>
 </div>
