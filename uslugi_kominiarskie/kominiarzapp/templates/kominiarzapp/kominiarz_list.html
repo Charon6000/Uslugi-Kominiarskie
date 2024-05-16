@@ -35,7 +35,7 @@
 <form action="" method="post">
     {% for object in object_list %}
     <div class="card mb-3 mt-4 border border-3 border-black" style="width: 50%; margin-left: 25%; margin-right: 25%;">
-        <img src="/static/img/glowna2.jpg" class="card-img-top" alt="...">
+        <img src={{object.zdj}} class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title">{{object.imie}} {{object.nazwisko}}</h5>
           <p class="card-text">{{object.opis|safe}}...</p>

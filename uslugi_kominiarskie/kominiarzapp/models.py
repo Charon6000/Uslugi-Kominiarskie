@@ -17,6 +17,7 @@ class Kominiarz(models.Model):
     nazwisko = models.CharField(max_length=20)
     wiek = models.IntegerField()
     opis = models.CharField(max_length=100)
+    zdj = models.CharField(max_length=1000)
 
     def __str__(self):
         return str(self.id)
