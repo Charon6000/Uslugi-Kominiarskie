@@ -32,4 +32,4 @@ class DodawanieKominiarza(forms.ModelForm):
 
     class Meta:
         model = Kominiarz
-        fields = ['imie', 'nazwisko', 'wiek', 'opis']
+        fields = ['imie', 'nazwisko', 'wiek', 'opis', 'zdj']
